@@ -10,15 +10,16 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 class MyApplication:Application() {
-
+companion object {
     lateinit var service: Service
+}
     override fun onCreate() {
         super.onCreate()
 
         val okHttpClient = OkHttpClient
             .Builder()
-            .readTimeout(Constant.time,TimeUnit.SECONDS)
-            .connectTimeout(Constant.time,TimeUnit.SECONDS)
+            .readTimeout(Constant.time, TimeUnit.SECONDS)
+            .connectTimeout(Constant.time, TimeUnit.SECONDS)
             .build()
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory()).build()
@@ -31,8 +32,9 @@ class MyApplication:Application() {
             .build()
 
 
-   service = retrofit.create(Service::class.java)
+        service = retrofit.create(Service::class.java)
 
 
     }
+
 }
