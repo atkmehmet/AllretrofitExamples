@@ -6,6 +6,6 @@ import com.squareup.moshi.JsonClass
 class Constant {
     companion object{
         val time :Long = 15
-        val url:String = "https://dummyjson.com"
+        val url:String = "https://dummyjson.com/"
     }
 }

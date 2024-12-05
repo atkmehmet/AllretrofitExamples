@@ -21,6 +21,7 @@ companion object {
             .readTimeout(Constant.time, TimeUnit.SECONDS)
             .connectTimeout(Constant.time, TimeUnit.SECONDS)
             .build()
+
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory()).build()
 

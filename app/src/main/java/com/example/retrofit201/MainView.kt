@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class MainView(private val service: Service):ViewModel() {
-    private var _userList by mutableStateOf<List<User>>(emptyList())
+     var userList by mutableStateOf<List<User>>(emptyList())
         private set
 
     var  error by mutableStateOf("")
@@ -24,7 +24,7 @@ class MainView(private val service: Service):ViewModel() {
             viewModelScope.launch {
 
                 val users = service.getUsers()
-                _userList = users
+                userList = users
             }
         }  catch (e:Exception){
             error = e.message?:""
