@@ -23,8 +23,8 @@ class MainView(private val service: Service):ViewModel() {
 
             viewModelScope.launch {
 
-                val users = service.getUsers()
-                userList = users
+                val response = service.getUsers()
+                userList = response.users
             }
         }  catch (e:Exception){
             error = e.message?:""

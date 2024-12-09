@@ -8,15 +8,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import java.lang.Error
 
 @Composable
-fun userScreen(users:List<User>){
+fun userScreen(users:List<User>,error: String){
     Column (modifier = Modifier.fillMaxSize()) {
-
+ Text(text = error)
+        
         LazyColumn(modifier = Modifier.padding(16.dp)) {
             items(users.size){
                 Column (modifier = Modifier.padding(16.dp)){
-                    Text(text = users[it].username)
+                    Text(text = users[it].id.toString())
                     Text(text = users[it].username)
                     Text(text = users[it].email)
                 }

@@ -1,35 +1,45 @@
 package com.example.retrofit201
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+
+
+@JsonClass(generateAdapter = true)
+data class jsonReturn(
+    val users: List<User>,
+    val total:Int,
+    val skip:Int,
+    val limit:Int
+)
 
 @JsonClass(generateAdapter = true)
 data class User(
-    val address: Address,
-    val age: Int,
-    val bank: Bank,
-    val birthDate: String,
-    val bloodGroup: String,
-    val company: Company,
-    val crypto: Crypto,
-    val ein: String,
-    val email: String,
-    val eyeColor: String,
-    val firstName: String,
-    val gender: String,
-    val hair: Hair,
-    val height: Double,
     val id: Int,
-    val image: String,
-    val ip: String,
+    val firstName: String,
     val lastName: String,
-    val macAddress: String,
     val maidenName: String,
-    val password: String,
+    val age: Int,
+    val gender: String,
+    val email: String,
     val phone: String,
-    val role: String,
-    val ssn: String,
-    val university: String,
-    val userAgent: String,
     val username: String,
-    val weight: Double
+    val password: String,
+    val birthDate: String,
+    val image: String,
+    val bloodGroup: String,
+    val height: Double,
+    val weight: Double,
+    val eyeColor: String,
+    val hair: Hair,
+    val ip: String,
+    val address: Address,
+    val macAddress: String,
+    val university: String,
+    val bank: Bank,
+    val company: Company,
+    val ein: String,
+    val ssn: String,
+    val userAgent: String,
+    val crypto: Crypto,
+    val role: String
 )

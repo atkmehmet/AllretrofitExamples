@@ -2,7 +2,6 @@ package com.example.retrofit201
 
 import android.app.Application
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -27,8 +26,8 @@ companion object {
 
         val retrofit = Retrofit
             .Builder()
-            .client(okHttpClient)
             .baseUrl(Constant.url)
+            .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
 

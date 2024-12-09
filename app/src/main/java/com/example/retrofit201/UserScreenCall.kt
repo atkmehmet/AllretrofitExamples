@@ -6,6 +6,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun UserScreenCall(view: MainView = viewModel(factory = MainViewModelfactory() )){
 
-    userScreen(view.userList)
+    userScreen(view.userList,view.error)
 
 }
