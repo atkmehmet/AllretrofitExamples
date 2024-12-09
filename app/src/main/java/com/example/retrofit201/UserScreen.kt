@@ -11,10 +11,14 @@ import androidx.compose.ui.unit.dp
 import java.lang.Error
 
 @Composable
-fun userScreen(users:List<User>,error: String){
+fun userScreen(users:List<User>,loginResponse: LoginResponse,error: String){
     Column (modifier = Modifier.fillMaxSize()) {
  Text(text = error)
-        
+
+        Column {
+            Text(text = loginResponse.username)
+            Text(text = loginResponse.refreshToken)
+        }
         LazyColumn(modifier = Modifier.padding(16.dp)) {
             items(users.size){
                 Column (modifier = Modifier.padding(16.dp)){

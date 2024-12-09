@@ -11,11 +11,13 @@ import kotlinx.coroutines.launch
 class MainView(private val service: Service):ViewModel() {
      var userList by mutableStateOf<List<User>>(emptyList())
         private set
+    var responseService by mutableStateOf(LoginResponse())
 
     var  error by mutableStateOf("")
     init {
 
         fetchUser()
+        fetchDummyToken(LoginRequest(username = "emilys", password = "emilyspass"))
     }
 
     fun fetchUser(){
@@ -30,6 +32,18 @@ class MainView(private val service: Service):ViewModel() {
             error = e.message?:""
         }
 
+    }
+
+    fun fetchDummyToken(request: LoginRequest) {
+        viewModelScope.launch {
+            try {
+                val dummyResponse = service.getToken(request)
+                responseService = dummyResponse
+            } catch (e: Exception) {
+                // Handle the error appropriately
+                error = e.message?:"" // Optional: Handle failed state
+            }
+        }
     }
 }
 class MainViewModelfactory:ViewModelProvider.Factory{
