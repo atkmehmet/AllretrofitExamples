@@ -3,6 +3,7 @@ package com.example.retrofit201
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 
 interface Service {
@@ -13,4 +14,11 @@ interface Service {
 
     @POST("user/login")
     suspend fun getToken(@Body loginRequest:LoginRequest):LoginResponse
+
+    @GET("product")
+    suspend fun getProduct(
+        @Query("limit")  limit:  Int,
+        @Query("skip")   skip:   Int,
+        @Query("select") select: String
+    ) :product
 }

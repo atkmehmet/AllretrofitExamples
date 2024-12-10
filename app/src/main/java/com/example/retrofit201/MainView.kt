@@ -13,6 +13,8 @@ class MainView(private val service: Service):ViewModel() {
         private set
     var responseService by mutableStateOf(LoginResponse())
 
+    var productList by mutableStateOf<List<ProductX>>(emptyList())
+        private set
     var  error by mutableStateOf("")
     init {
 
@@ -32,6 +34,18 @@ class MainView(private val service: Service):ViewModel() {
             error = e.message?:""
         }
 
+    }
+
+    fun fetchProdcut(){
+        try {
+              viewModelScope.launch {
+                  productList = service.getProduct(10,"","").products
+
+              }
+                    }
+        catch (e:Exception){
+            error = e.message.toString()
+        }
     }
 
     fun fetchDummyToken(request: LoginRequest) {
