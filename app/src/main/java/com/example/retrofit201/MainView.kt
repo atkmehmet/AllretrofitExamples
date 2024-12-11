@@ -20,6 +20,7 @@ class MainView(private val service: Service):ViewModel() {
 
         fetchUser()
         fetchDummyToken(LoginRequest(username = "emilys", password = "emilyspass"))
+        fetchProdcut(10,10,"title,price")
     }
 
     fun fetchUser(){
@@ -36,10 +37,10 @@ class MainView(private val service: Service):ViewModel() {
 
     }
 
-    fun fetchProdcut(){
+    fun fetchProdcut(limit:Int,skip:Int,select:String){
         try {
               viewModelScope.launch {
-                  productList = service.getProduct(10,"","").products
+                  productList = service.getProduct(limit,skip,select).products
 
               }
                     }
