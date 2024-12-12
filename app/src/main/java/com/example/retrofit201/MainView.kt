@@ -60,6 +60,17 @@ class MainView(private val service: Service):ViewModel() {
             }
         }
     }
+    fun updateTitle(id:Int,title:String){
+        try {
+            viewModelScope.launch {
+
+               val xx = service.changeTitle(id,"Galasy ++")
+            }
+        }
+        catch (e:Exception){
+            
+        }
+    }
 }
 class MainViewModelfactory:ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T = MainView(MyApplication.service) as T
