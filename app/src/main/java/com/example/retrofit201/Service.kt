@@ -1,6 +1,7 @@
 package com.example.retrofit201
 
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -24,9 +25,14 @@ interface Service {
         @Query("select") select: String
     ) :product
 
-    @PUT("product/{id}")
+    @PUT("products/{id}")
     suspend fun changeTitle(
         @Path("id") id: Int,
-        @Body title:String
-    ):ProductX
+        @Body title:UpdateTitle
+    ):ResponseTitleUpdate
+
+    @DELETE("products/{id}")
+    suspend fun deleteProduct(
+        @Path("id") id:Int
+    ):deleteResponse
 }

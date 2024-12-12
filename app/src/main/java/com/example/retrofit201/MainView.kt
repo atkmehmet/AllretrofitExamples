@@ -21,6 +21,7 @@ class MainView(private val service: Service):ViewModel() {
         fetchUser()
         fetchDummyToken(LoginRequest(username = "emilys", password = "emilyspass"))
         fetchProdcut(10,10,"title,price")
+        updateTitle(1,"iPhone Galaxy +1")
     }
 
     fun fetchUser(){
@@ -64,11 +65,23 @@ class MainView(private val service: Service):ViewModel() {
         try {
             viewModelScope.launch {
 
-               val xx = service.changeTitle(id,"Galasy ++")
+               val xx = service.changeTitle(id, UpdateTitle(title))
             }
         }
         catch (e:Exception){
-            
+
+        }
+    }
+
+    fun deleteProducts(id: Int){
+        try
+        {
+           viewModelScope.launch {
+               val xx = service.deleteProduct(id)
+           }
+        }
+        catch (e:Exception){
+
         }
     }
 }
